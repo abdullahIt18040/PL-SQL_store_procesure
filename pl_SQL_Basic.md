@@ -656,3 +656,870 @@ Dynamic SQL
 - Oracle PL/SQL Documentation
 - Oracle Database Concepts
 - Oracle SQL Language Reference
+
+  # Oracle SQL & PL/SQL Notes
+
+> A complete Oracle SQL & PL/SQL learning guide for beginners, interview preparation, and enterprise application development.
+
+---
+
+# Table of Contents
+
+## SQL
+
+1. SQL Statement Types
+2. SELECT Statement
+3. WHERE Clause
+4. ORDER BY Clause
+5. HAVING Clause
+6. SQL Functions
+7. GROUP BY
+8. Joins
+9. Subqueries
+10. Set Operators
+11. DML
+12. Transactions
+13. DDL
+14. Constraints
+15. Views
+16. Sequences
+17. Indexes
+18. Synonyms
+19. Data Dictionary Views
+20. Important Intellect Tables
+
+---
+
+## PL/SQL
+
+1. Introduction
+2. Data Types
+3. Variables
+4. Operators
+5. Conditional Statements
+6. Loops
+7. Procedures
+8. Functions
+9. Cursors
+10. Records
+11. Exceptions
+12. Triggers
+13. Packages
+14. Collections
+15. Transactions
+
+---
+
+# SQL
+
+## 1. Types of SQL Statements
+
+### DDL (Data Definition Language)
+
+Used to define database objects.
+
+- CREATE
+- ALTER
+- DROP
+- TRUNCATE
+- RENAME
+
+---
+
+### DML (Data Manipulation Language)
+
+Used to manipulate data.
+
+- SELECT
+- INSERT
+- UPDATE
+- DELETE
+- MERGE
+
+---
+
+### DCL (Data Control Language)
+
+Used for permissions.
+
+- GRANT
+- REVOKE
+
+---
+
+### TCL (Transaction Control Language)
+
+Used to control transactions.
+
+- COMMIT
+- ROLLBACK
+- SAVEPOINT
+
+---
+
+# 2. SELECT Statement
+
+Retrieve data from a table.
+
+```sql
+SELECT *
+FROM EMPLOYEE;
+```
+
+---
+
+## Column Alias
+
+```sql
+SELECT EMP_NAME AS NAME
+FROM EMPLOYEE;
+```
+
+---
+
+## Concatenation Operator
+
+```sql
+SELECT FIRST_NAME || ' ' || LAST_NAME
+FROM EMPLOYEE;
+```
+
+---
+
+# 3. WHERE Clause
+
+Filters rows.
+
+```sql
+SELECT *
+FROM EMPLOYEE
+WHERE SALARY > 50000;
+```
+
+---
+
+## Comparison Operators
+
+- =
+- <>
+- !=
+- >
+- <
+- >=
+- <=
+
+---
+
+## Logical Operators
+
+- AND
+- OR
+- NOT
+
+---
+
+## Rules of Precedence
+
+```
+()
+NOT
+AND
+OR
+```
+
+---
+
+# 4. ORDER BY
+
+Sorts result.
+
+```sql
+SELECT *
+FROM EMPLOYEE
+ORDER BY SALARY DESC;
+```
+
+---
+
+# 5. HAVING Clause
+
+Filters grouped data.
+
+```sql
+SELECT DEPT_ID,
+COUNT(*)
+FROM EMPLOYEE
+GROUP BY DEPT_ID
+HAVING COUNT(*) > 5;
+```
+
+---
+
+# 6. Substitution Variables
+
+```
+&
+:
+```
+
+Example
+
+```sql
+SELECT *
+FROM EMPLOYEE
+WHERE EMP_ID=&ID;
+```
+
+---
+
+# 7. SQL Functions
+
+## Single Row Functions
+
+- UPPER
+- LOWER
+- INITCAP
+- LENGTH
+- SUBSTR
+- ROUND
+- ABS
+
+---
+
+## Date Functions
+
+- SYSDATE
+- ADD_MONTHS
+- MONTHS_BETWEEN
+- NEXT_DAY
+- LAST_DAY
+
+---
+
+## Conversion Functions
+
+- TO_CHAR
+- TO_DATE
+- TO_NUMBER
+
+---
+
+## General Functions
+
+- NVL
+- NVL2
+- NULLIF
+- COALESCE
+
+---
+
+## Conditional Expressions
+
+- CASE
+- DECODE
+
+---
+
+## Group Functions
+
+- COUNT
+- SUM
+- AVG
+- MIN
+- MAX
+
+---
+
+# 8. GROUP BY
+
+```sql
+SELECT DEPT_ID,
+AVG(SALARY)
+FROM EMPLOYEE
+GROUP BY DEPT_ID;
+```
+
+---
+
+# 9. Joins
+
+## Types
+
+- INNER JOIN
+- LEFT OUTER JOIN
+- RIGHT OUTER JOIN
+- FULL OUTER JOIN
+- CROSS JOIN
+- SELF JOIN
+
+---
+
+# 10. Subqueries
+
+## Single Row
+
+```
+=
+<
+>
+```
+
+---
+
+## Multiple Row
+
+```
+IN
+ANY
+ALL
+EXISTS
+```
+
+---
+
+# Guidelines
+
+- Execute inner query first.
+- Outer query uses inner query result.
+
+---
+
+# 11. Set Operators
+
+## UNION
+
+Removes duplicates.
+
+## UNION ALL
+
+Keeps duplicates.
+
+## INTERSECT
+
+Common rows.
+
+## MINUS
+
+Rows from first query not found in second query.
+
+---
+
+# 12. DML Statements
+
+## INSERT
+
+```sql
+INSERT INTO EMPLOYEE
+VALUES(...);
+```
+
+---
+
+## UPDATE
+
+```sql
+UPDATE EMPLOYEE
+SET SALARY=60000;
+```
+
+---
+
+## DELETE
+
+```sql
+DELETE FROM EMPLOYEE;
+```
+
+---
+
+## TRUNCATE
+
+Deletes all rows.
+
+Cannot rollback.
+
+---
+
+## MERGE
+
+Insert or Update.
+
+---
+
+## INSERT Using Subquery
+
+```sql
+INSERT INTO EMPLOYEE_BACKUP
+SELECT *
+FROM EMPLOYEE;
+```
+
+---
+
+# 13. Transactions
+
+## COMMIT
+
+Save changes.
+
+---
+
+## ROLLBACK
+
+Undo changes.
+
+---
+
+## SAVEPOINT
+
+Partial rollback.
+
+---
+
+# 14. DDL
+
+## CREATE TABLE
+
+```sql
+CREATE TABLE EMPLOYEE(
+ID NUMBER PRIMARY KEY,
+NAME VARCHAR2(100)
+);
+```
+
+---
+
+## ALTER TABLE
+
+Add, Modify or Drop columns.
+
+---
+
+## DROP TABLE
+
+Delete table permanently.
+
+---
+
+# 15. Constraints
+
+- NOT NULL
+- UNIQUE
+- PRIMARY KEY
+- FOREIGN KEY
+- CHECK
+
+---
+
+## Constraint Levels
+
+- Column Level
+- Table Level
+
+---
+
+# 16. Views
+
+## Simple View
+
+Based on one table.
+
+---
+
+## Complex View
+
+Based on multiple tables.
+
+---
+
+## Operations
+
+- CREATE VIEW
+- UPDATE VIEW
+- DROP VIEW
+
+---
+
+# 17. Sequence
+
+```sql
+CREATE SEQUENCE EMP_SEQ;
+```
+
+---
+
+# 18. Index
+
+Improve query performance.
+
+```sql
+CREATE INDEX IDX_EMP
+ON EMPLOYEE(NAME);
+```
+
+---
+
+# 19. Synonyms
+
+Provide another name for database objects.
+
+---
+
+# 20. Data Dictionary Views
+
+- USER_TABLES
+- USER_TAB_COLUMNS
+- USER_OBJECTS
+- USER_CONSTRAINTS
+- USER_CONS_COLUMNS
+- USER_VIEWS
+- USER_SEQUENCES
+- USER_TAB_SYNONYMS
+- ALL_OBJECTS
+
+---
+
+# Important Intellect Tables
+
+> Add project-specific tables here.
+
+Example
+
+- ACNTS
+- CLIENTS
+- TRAN2020
+- PRODUCTS
+- SMSALERTQ
+- GLMAST
+- GLBALASONHIST
+
+---
+
+# PL/SQL
+
+## PL/SQL Topics
+
+### Basic Syntax
+
+- Block Structure
+- DECLARE
+- BEGIN
+- EXCEPTION
+- END
+
+---
+
+### Data Types
+
+- Numeric
+- Character
+- Boolean
+- Date
+- LOB
+
+---
+
+### Variables
+
+- Declaration
+- Initialization
+- Scope
+- Local Variables
+- Global Variables
+
+---
+
+### Operators
+
+- Arithmetic
+- Relational
+- Logical
+- Comparison
+
+---
+
+### Conditional Statements
+
+- IF
+- IF ELSE
+- IF ELSIF
+- CASE
+
+---
+
+### Loops
+
+- LOOP
+- WHILE
+- FOR
+- Nested LOOP
+
+Control Statements
+
+- EXIT
+- CONTINUE
+- GOTO
+
+---
+
+### Procedures
+
+- Create Procedure
+- Execute Procedure
+- Drop Procedure
+
+Parameter Modes
+
+- IN
+- OUT
+- IN OUT
+
+Passing Parameters
+
+- Positional
+- Named
+- Mixed
+
+---
+
+### Functions
+
+- Create Function
+- Call Function
+- Recursive Function
+
+---
+
+### Cursors
+
+## Implicit Cursor
+
+- SQL%FOUND
+- SQL%NOTFOUND
+- SQL%ROWCOUNT
+
+---
+
+## Explicit Cursor
+
+- OPEN
+- FETCH
+- CLOSE
+
+Attributes
+
+- %ISOPEN
+
+---
+
+### Records
+
+- %ROWTYPE
+- Cursor Records
+- User Defined Records
+
+---
+
+### Exception Handling
+
+Common Exceptions
+
+- NO_DATA_FOUND
+- TOO_MANY_ROWS
+- DUP_VAL_ON_INDEX
+- ZERO_DIVIDE
+- INVALID_CURSOR
+- INVALID_NUMBER
+- CURSOR_ALREADY_OPEN
+- OTHERS
+
+---
+
+### Triggers
+
+Types
+
+- Table Trigger
+- Schema Trigger
+
+Benefits
+
+- Auditing
+- Validation
+- Logging
+- Business Rules
+
+---
+
+### Packages
+
+- Specification
+- Body
+- Package Variables
+- Package Functions
+- Package Procedures
+
+---
+
+### Collections
+
+## Associative Array
+
+```
+INDEX BY PLS_INTEGER
+```
+
+---
+
+## Nested Table
+
+---
+
+## VARRAY
+
+---
+
+Collection Methods
+
+- EXISTS
+- COUNT
+- LIMIT
+- FIRST
+- LAST
+- PRIOR
+- NEXT
+- EXTEND
+- DELETE
+
+Collection Exceptions
+
+- COLLECTION_IS_NULL
+- NO_DATA_FOUND
+- SUBSCRIPT_BEYOND_COUNT
+- SUBSCRIPT_OUTSIDE_LIMIT
+- VALUE_ERROR
+
+---
+
+### Transactions
+
+- COMMIT
+- ROLLBACK
+- SAVEPOINT
+- AUTOCOMMIT
+
+```sql
+SET AUTOCOMMIT OFF;
+```
+
+---
+
+# Oracle SQL Learning Roadmap
+
+```
+SQL Basics
+      │
+      ▼
+SELECT
+      │
+      ▼
+WHERE
+      │
+      ▼
+ORDER BY
+      │
+      ▼
+Functions
+      │
+      ▼
+GROUP BY
+      │
+      ▼
+HAVING
+      │
+      ▼
+JOINS
+      │
+      ▼
+SUBQUERY
+      │
+      ▼
+SET OPERATORS
+      │
+      ▼
+DML
+      │
+      ▼
+DDL
+      │
+      ▼
+CONSTRAINTS
+      │
+      ▼
+VIEWS
+      │
+      ▼
+SEQUENCES
+      │
+      ▼
+INDEXES
+      │
+      ▼
+PL/SQL
+```
+
+---
+
+# Oracle PL/SQL Learning Roadmap
+
+```
+PL/SQL Block
+      │
+      ▼
+Variables
+      │
+      ▼
+Operators
+      │
+      ▼
+IF / CASE
+      │
+      ▼
+Loops
+      │
+      ▼
+Procedures
+      │
+      ▼
+Functions
+      │
+      ▼
+Cursors
+      │
+      ▼
+Records
+      │
+      ▼
+Exceptions
+      │
+      ▼
+Triggers
+      │
+      ▼
+Packages
+      │
+      ▼
+Collections
+      │
+      ▼
+Transactions
+```
+
+---
+
+# References
+
+- Oracle Database Documentation
+- Oracle SQL Language Reference
+- Oracle PL/SQL User's Guide
+- Oracle Database Concepts
