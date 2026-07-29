@@ -3,6 +3,117 @@
 ## Static SQL
 
 ### কী?
+Oracle LOB (Large Object) Data Types
+📌 LOB (Large Object)
+
+LOB (Large Object) হলো Oracle-এর এমন একটি Data Type, যা বড় আকারের Data সংরক্ষণের জন্য ব্যবহৃত হয়।
+
+যখন VARCHAR2 বা RAW-এ Data রাখা সম্ভব হয় না, তখন LOB ব্যবহার করা হয়।
+
+Oracle-এর LOB Types
+BLOB (Binary Large Object)
+CLOB (Character Large Object)
+NCLOB (National Character Large Object)
+BFILE (Binary File)
+1. BLOB (Binary Large Object)
+কী?
+
+BLOB-এ Binary Data সংরক্ষণ করা হয়।
+
+এটি মানুষের পড়ার মতো Text নয়।
+
+কী ধরনের Data রাখা যায়?
+📷 Image (.jpg, .png)
+📄 PDF
+🎵 Audio (.mp3)
+🎬 Video (.mp4)
+📦 ZIP File
+📄 MS Word File
+Table Example
+CREATE TABLE employee_photo
+(
+    emp_id   NUMBER,
+    emp_name VARCHAR2(50),
+    photo    BLOB
+);
+Insert Example
+INSERT INTO employee_photo
+VALUES
+(
+    1,
+    'Rahim',
+    EMPTY_BLOB()
+);
+বাস্তব উদাহরণ
+
+Facebook Profile Picture
+
+User
+ │
+ ▼
+Image (.jpg/.png)
+ │
+ ▼
+Stored as BLOB
+কখন BLOB ব্যবহার করবেন?
+User Profile Photo
+Passport Scan
+PDF Document
+Video
+Audio
+Digital Signature
+2. CLOB (Character Large Object)
+কী?
+
+CLOB-এ বড় আকারের Character/Text Data সংরক্ষণ করা হয়।
+
+কী ধরনের Data রাখা যায়?
+📰 Article
+📝 Description
+📖 Blog
+📄 XML
+🌐 HTML
+📦 JSON
+💻 Large SQL Script
+Table Example
+CREATE TABLE article
+(
+    id      NUMBER,
+    title   VARCHAR2(100),
+    details CLOB
+);
+Insert Example
+INSERT INTO article
+VALUES
+(
+    1,
+    'Oracle',
+    'This is a very large article...'
+);
+বাস্তব উদাহরণ
+
+ধরুন একটি News Website আছে।
+
+Title
+
+Oracle Database
+
+Description
+
+20,000+ Words Article
+
+এত বড় Text VARCHAR2-এ রাখা সম্ভব নয়।
+
+তাই CLOB ব্যবহার করা হয়।
+
+কখন CLOB ব্যবহার করবেন?
+Blog Post
+News Article
+Product Description
+XML
+HTML
+JSON
+Large SQL Script
 
 | BLOB        | CLOB           |
 | ----------- | -------------- |
