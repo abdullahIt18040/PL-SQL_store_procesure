@@ -4,6 +4,15 @@
 
 ### কী?
 
+| BLOB        | CLOB           |
+| ----------- | -------------- |
+| Binary Data | Character Data |
+| Image       | Text           |
+| Video       | Article        |
+| PDF         | XML            |
+| Audio       | JSON           |
+
+
 **Static SQL** হলো এমন SQL Statement যা **Compile Time**-এ নির্ধারিত থাকে। অর্থাৎ, SQL Query আগে থেকেই কোডে লেখা থাকে এবং Program চলার সময় পরিবর্তন হয় না।
 
 ### বৈশিষ্ট্য
