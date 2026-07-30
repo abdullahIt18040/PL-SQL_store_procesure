@@ -343,3 +343,101 @@ HAVING
 - `GROUP BY` groups rows before aggregation.
 - `HAVING` filters grouped results.
 - `WHERE` filters rows before grouping.
+
+
+```
+# LISTAGG() Function in Oracle SQL
+
+## What is LISTAGG()?
+
+`LISTAGG()` is an Oracle **aggregate function** used to combine multiple row values into a **single string**.
+
+It is commonly used in reports where multiple values need to be displayed in one column.
+
+---
+
+## Syntax
+
+```sql
+LISTAGG(column_name, 'separator')
+WITHIN GROUP (ORDER BY column_name)
+Components
+Part	Description
+LISTAGG()	Combines multiple rows into one string
+Separator	Character used between values (,, -, space etc.)
+WITHIN GROUP	Defines the order of concatenation
+ORDER BY	Specifies sorting order
+Basic Example
+Table: CLIENTS
+CLIENT_NAME
+Rahim
+Abdullah
+Mamun
+Query
+SELECT LISTAGG(CLIENT_NAME, ', ')
+       WITHIN GROUP (ORDER BY CLIENT_NAME)
+       AS CLIENT_LIST
+FROM CLIENTS;
+Output
+Abdullah, Mamun, Rahim
+How LISTAGG Works
+
+Input Data:
+
+Rahim
+Abdullah
+Mamun
+Step 1: WITHIN GROUP sorts data
+ORDER BY CLIENT_NAME
+
+Result:
+
+Abdullah
+Mamun
+Rahim
+Step 2: LISTAGG combines values
+
+Output:
+
+Abdullah, Mamun, Rahim
+Different Separator Example
+Using Pipe (|)
+SELECT LISTAGG(CLIENT_NAME, ' | ')
+       WITHIN GROUP (ORDER BY CLIENT_NAME)
+FROM CLIENTS;
+
+Output:
+
+Abdullah | Mamun | Rahim
+DESC Order Example
+SELECT LISTAGG(CLIENT_NAME, ', ')
+       WITHIN GROUP (ORDER BY CLIENT_NAME DESC)
+FROM CLIENTS;
+
+Output:
+
+Rahim, Mamun, Abdullah
+LISTAGG with GROUP BY
+
+Used when each group needs its own concatenated value.
+
+Example: Joint Account Holder Report
+Table: JOINTCLIENTSDTL
+ACCOUNT_NO	CLIENT_NAME
+A001	Mamun
+A001	Abdullah
+A001	Rahim
+A002	Karim
+A002	Jony
+Query
+SELECT ACCOUNT_NO,
+       LISTAGG(CLIENT_NAME, ', ')
+       WITHIN GROUP (ORDER BY CLIENT_NAME) AS HOLDERS
+FROM JOINTCLIENTSDTL
+GROUP BY ACCOUNT_NO;
+Output
+ACCOUNT_NO	HOLDERS
+A001	Abdullah, Mamun, Rahim
+A002	Jony, Karim
+Real Industry Use Cases
+```
