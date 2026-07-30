@@ -358,7 +358,7 @@ It is commonly used in reports where multiple values need to be displayed in one
 
 ## Syntax
 
-```sql
+sql
 LISTAGG(column_name, 'separator')
 WITHIN GROUP (ORDER BY column_name)
 Components
@@ -440,4 +440,4 @@ ACCOUNT_NO	HOLDERS
 A001	Abdullah, Mamun, Rahim
 A002	Jony, Karim
 Real Industry Use Cases
-```
+
