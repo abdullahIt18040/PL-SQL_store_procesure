@@ -1,3 +1,18 @@
+
+# Oracle Outer Join Operator (+)
+
+## What is (+) in Oracle SQL?
+
+`(+)` is the **old Oracle outer join syntax** used to perform an **OUTER JOIN**.
+
+It allows Oracle to return rows from one table even when there is no matching record in another table.
+
+---
+
+# Syntax
+
+```sql
+Table1.column = Table2.column(+)
 # PL/SQL Notes
 
 A concise and interview-oriented PL/SQL guide for Oracle Database developers.
