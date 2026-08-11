@@ -318,7 +318,21 @@ Salary cannot be negative.
 # 11. RAISE_APPLICATION_ERROR
 
 Custom error message এবং error number তৈরি করার জন্য `RAISE_APPLICATION_ERROR` ব্যবহার করা হয়।
+```text
+RAISE_APPLICATION_ERROR-এর syntax:
 
+RAISE_APPLICATION_ERROR(
+    error_number,
+    error_message
+);
+Error number-এর rule
+
+Custom error-এর জন্য error number অবশ্যই:
+
+-20000 থেকে -20999
+
+এর মধ্যে হতে হবে।
+```
 Error number সাধারণত:
 
 ```text
